@@ -16,7 +16,11 @@ export default function App() {
     <div>
       <h1>My Data App</h1>
       <ItemForm onAdd={async (name: string) => { await api.createItem(name); load(); }}/>
-      <ItemList items={items} onDelete={async (id: number) => { await api.deleteItem(id); load(); }}/>
+      <ItemList
+          items={items}
+                onDelete={async (id: number) => { await api.deleteItem(id); }}
+                onPut={async (id: number, name: string) => { await api.modifyItem(id, name);
+          load(); }}/>
     </div>
   );
 }
